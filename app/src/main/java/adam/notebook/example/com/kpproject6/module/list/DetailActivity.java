@@ -38,7 +38,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static adam.notebook.example.com.kpproject6.MyApplication.pref;
 
 @SuppressLint("SetTextI18n")
 public class DetailActivity extends AppCompatActivity implements ServiceCallback{

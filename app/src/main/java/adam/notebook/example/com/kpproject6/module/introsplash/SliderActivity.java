@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.PreferenceKey;
 import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.PreferenceUtils;
+import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.SharedPrefManager;
 import adam.notebook.example.com.kpproject6.MyApplication;
 import adam.notebook.example.com.kpproject6.R;
 
@@ -31,10 +32,19 @@ public class SliderActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    private MyApplication myApplication;
+    private SharedPrefManager share = MyApplication.share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Checking for first time launch - before calling setContentView()
+        myApplication = MyApplication.getInstance();
+        if (share.isLoggedIn()) {
+            launchHomeScreen();
+            finish();
+        }
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

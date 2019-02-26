@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ import adam.notebook.example.com.kpproject6.R;
 
 public class SettingsFragment extends Fragment {
 
-    private TextView etEmail, etName, etAddress, etCity, etPc;
+    private EditText etName, etAddress, etCity, etPc;
     private ImageView etimgprofile;
     private Button btnEdit;
 
@@ -37,6 +38,7 @@ public class SettingsFragment extends Fragment {
         etCity = view.findViewById(R.id.edcity_profile);
         etPc = view.findViewById(R.id.edpc_profile);
         etimgprofile = view.findViewById(R.id.edimage_profile);
+        btnEdit = view.findViewById(R.id.btn_edit);
 
         etName.setText(SharedPrefManager.getInstance(getActivity()).getUser().getNameUser());
         etAddress.setText(SharedPrefManager.getInstance(getActivity()).getUser().getAddressUser());
@@ -48,7 +50,6 @@ public class SettingsFragment extends Fragment {
                 .placeholder(R.drawable.ic_account_circle_black)
                 .error(R.drawable.ic_clear)
                 .into(etimgprofile);
-
     }
 
 }

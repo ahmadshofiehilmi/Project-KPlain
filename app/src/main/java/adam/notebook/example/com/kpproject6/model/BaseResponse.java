@@ -11,13 +11,13 @@ public class BaseResponse {
     @SerializedName("message")
     private String message;
     @SerializedName("user")
-    private User data;
+    private User user;
 
-    public BaseResponse(String code, Boolean status, String message, User data) {
+    public BaseResponse(String code, Boolean status, String message, User user) {
         this.code = code;
         this.status = status;
         this.message = message;
-        this.data = data;
+        this.user = user;
     }
 
     public String getCode() {
@@ -32,12 +32,8 @@ public class BaseResponse {
         return status;
     }
 
-    public Boolean isStatus(){
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setError(Boolean error) {
+        this.status = error;
     }
 
     public String getMessage() {
@@ -48,11 +44,11 @@ public class BaseResponse {
         this.message = message;
     }
 
-    public User getData() {
-        return data;
+    public User getUser() {
+        return user;
     }
 
-    public void setData(User data) {
-        this.data = data;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

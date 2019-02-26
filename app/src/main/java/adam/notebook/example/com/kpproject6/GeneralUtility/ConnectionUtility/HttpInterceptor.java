@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.PreferenceUtils;
+import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.SharedPrefManager;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,11 +17,11 @@ import okhttp3.Response;
 public class HttpInterceptor implements Interceptor {
 
     //    /*private Context context;*/
-    private PreferenceUtils pref;
+    private SharedPrefManager pref;
 
     public HttpInterceptor(Context context) {
         /*this.context = context;*/
-        pref = new PreferenceUtils(context);
+        pref = new SharedPrefManager(context);
     }
 
 

@@ -7,10 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
+import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.SharedPrefManager;
 import adam.notebook.example.com.kpproject6.R;
 
 public class PasswordFragment extends Fragment {
+
+    private EditText edtEmail, edtPassword;
 
     @Nullable
     @Override
@@ -21,6 +25,12 @@ public class PasswordFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        edtEmail = view.findViewById(R.id.edt_email);
+        edtPassword = view.findViewById(R.id.edt_password);
+
+        edtEmail.setText(SharedPrefManager.getInstance(getActivity()).getUser().getNameUser());
+        edtPassword.setText(SharedPrefManager.getInstance(getActivity()).getUser().getAddressUser());
 
     }
 }

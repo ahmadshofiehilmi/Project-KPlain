@@ -119,10 +119,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 BaseResponse baseResponse = response.body();
 
+                assert baseResponse != null;
                 if (!baseResponse.getStatus()) {
 
                     SharedPrefManager.getInstance(LoginActivity.this)
-                            .saveUser(baseResponse.getData());
+                            .saveUser(baseResponse.getUser());
 
                     Intent intent = new Intent(LoginActivity.this, TablayoutActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

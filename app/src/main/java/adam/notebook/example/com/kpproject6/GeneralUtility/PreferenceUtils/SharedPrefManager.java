@@ -10,10 +10,15 @@ public class SharedPrefManager {
     private static final String SHARED_PREF_NAME = "my_shared_preff";
 
     private static SharedPrefManager mInstance;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor spe;
     private Context mCtx;
 
     public SharedPrefManager(Context mCtx) {
         this.mCtx = mCtx;
+        sp = mCtx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
+        spe = sp.edit();
+        spe.apply();
     }
 
     public static synchronized SharedPrefManager getInstance(Context mCtx) {
@@ -21,6 +26,26 @@ public class SharedPrefManager {
             mInstance = new SharedPrefManager(mCtx);
         }
         return mInstance;
+    }
+
+    public void putString(String key, String value) {
+        spe.putString(key, value).apply();
+    }
+
+    public void putBoolean(String key, Boolean value) {
+        spe.putBoolean(key, value).apply();
+    }
+
+    public String getString(String key) {
+        return sp.getString(key, "");
+    }
+
+    public String getToken() {
+        return sp.getString("token", "");
+    }
+
+    public void setToken(String token) {
+        spe.putString("token", token).apply();
     }
 
 

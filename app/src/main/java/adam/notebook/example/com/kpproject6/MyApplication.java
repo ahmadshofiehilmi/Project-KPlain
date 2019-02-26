@@ -11,6 +11,7 @@ import adam.notebook.example.com.kpproject6.GeneralUtility.ConnectionUtility.Htt
 import adam.notebook.example.com.kpproject6.GeneralUtility.ConnectionUtility.apiservice.ApiService;
 import adam.notebook.example.com.kpproject6.GeneralUtility.ConnectionUtility.apiservice.OpenApiService;
 import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.PreferenceUtils;
+import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.SharedPrefManager;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -27,7 +28,9 @@ public class MyApplication extends Application {
     //    private static RegionApiService regionApiService;
     private Gson gson;
 
-    public static PreferenceUtils pref;
+//    public static PreferenceUtils pref;
+    public static SharedPrefManager share;
+
     public MyApplication() {
         mInstance = this;
     }
@@ -40,7 +43,8 @@ public class MyApplication extends Application {
 //                .init();
         mInstance = this;
 //        TypefaceCompatUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Montserrat-Regular_0.ttf");
-        pref = new PreferenceUtils(getApplicationContext());
+//        pref = new PreferenceUtils(getApplicationContext());
+        share = new SharedPrefManager(getApplicationContext());
 //
         gson = new GsonBuilder()
                 .setLenient()
@@ -58,21 +62,6 @@ public class MyApplication extends Application {
                 .build();
         apiService = retrofit.create(ApiService.class);
     }
-//
-//    private void openApiRetrofit() {
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(BuildConfig.HostApi)
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .client(getDefaultOkHttpClient())
-//                .build();
-//        openApiService = retrofit.create(OpenApiService.class);
-//    }
-
-    /**digunakan uk akses konfig api yang make default token*/
-    public static OpenApiService getOpenApiService() {
-        return openApiService;
-    }
-
 
     /**digunakan uk akses konfig api yang make token user*/
     public static ApiService getApiService() {
@@ -100,36 +89,5 @@ public class MyApplication extends Application {
 
     public static MyApplication getInstance() {
         return mInstance;
-    }
-    public void saveTheme1(boolean Theme1) {
-        preferences = this.getSharedPreferences(prefName, 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("Theme1", Theme1);
-        editor.apply();
-    }
-
-    public boolean getTheme1() {
-        preferences = this.getSharedPreferences(prefName, 0);
-        if (preferences != null) {
-            boolean image = preferences.getBoolean("Theme1", true);
-            return image;
-        }
-        return false;
-    }
-
-    public void saveTheme2(boolean Theme2) {
-        preferences = this.getSharedPreferences(prefName, 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("Theme2", Theme2);
-        editor.commit();
-    }
-
-    public boolean getTheme2() {
-        preferences = this.getSharedPreferences(prefName, 0);
-        if (preferences != null) {
-            boolean image = preferences.getBoolean("Theme2", false);
-            return image;
-        }
-        return false;
     }
 }

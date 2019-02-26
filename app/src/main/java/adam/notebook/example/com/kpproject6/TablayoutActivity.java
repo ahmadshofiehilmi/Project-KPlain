@@ -23,13 +23,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.PreferenceUtils;
+import adam.notebook.example.com.kpproject6.GeneralUtility.PreferenceUtils.SharedPrefManager;
 import adam.notebook.example.com.kpproject6.module.category.CategoriesFragment;
 import adam.notebook.example.com.kpproject6.module.trending.TrendingFragment;
 
 public class TablayoutActivity extends AppCompatActivity{
 
-    private PreferenceUtils pref = MyApplication.pref;
+    private SharedPrefManager sharedPrefManager;
     private int REQUEST_CODE_LOGIN = 200;
 
 
@@ -89,14 +89,8 @@ public class TablayoutActivity extends AppCompatActivity{
         tabLayout.setupWithViewPager(viewPager);
 
         setupIconTab();
-//        configPref();
     }
 
-//    private void configPref() {
-//        if(pref.getUserSession().getIdUser() != null &&!pref.getUserSession().getIdUser().equals("")){
-//            setupIconTab();
-//        }
-//    }
 
     private void setupIconTab() {
         tabLayout.getTabAt(0).setIcon(IconsTab[0]);

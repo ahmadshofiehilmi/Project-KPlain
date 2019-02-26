@@ -24,7 +24,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Holder> {
 
     private List<CartItem> cartList;
     private CartItemListener listener;
-//
+
     public CartAdapter(List<CartItem> cartList, CartItemListener listener) {
         this.cartList = cartList;
         this.listener = listener;

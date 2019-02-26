@@ -19,8 +19,9 @@ public interface ApiService {
 
     @POST("login")
     @FormUrlEncoded
-    Call<BaseResponse> login(@Field("email") String email,
-                             @Field("password") String password);
+    Call<BaseResponse> login(
+            @Field("email") String email,
+            @Field("password") String password);
 
     @POST("register")
     @FormUrlEncoded
