@@ -40,6 +40,7 @@ import butterknife.OnClick;
 
 import static adam.notebook.example.com.kpproject6.MyApplication.pref;
 
+@SuppressLint("SetTextI18n")
 public class DetailActivity extends AppCompatActivity implements ServiceCallback{
 
     @BindView(R.id.layout_detail_container)
@@ -60,10 +61,9 @@ public class DetailActivity extends AppCompatActivity implements ServiceCallback
 //    private List<Product> product ;
     private Product products;
     private Menu menu;
-//    private PreferenceUtils preferenceUtils = MyApplication.pref;
-    SharedPrefManager share;
+    private SharedPrefManager share;
 
-    @SuppressLint("SetTextI18n")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

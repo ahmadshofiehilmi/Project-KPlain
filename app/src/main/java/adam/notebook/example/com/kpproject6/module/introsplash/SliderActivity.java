@@ -31,19 +31,10 @@ public class SliderActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private MyApplication myApplication;
-    private PreferenceUtils pref = MyApplication.pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Checking for first time launch - before calling setContentView()
-        myApplication = MyApplication.getInstance();
-        if (pref.getBoolean(PreferenceKey.IsNotFirstUse)) {
-            launchHomeScreen();
-            finish();
-        }
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

@@ -18,12 +18,10 @@ public class SplashScreen extends AppCompatActivity {
 
     protected boolean active = true;
     protected int splashTime = 3000;
-    private PreferenceUtils pref = MyApplication.pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setTheme(R.style.AppTheme_green);
         setContentView(R.layout.activity_splash_screen);
 
         Thread splashThread = new Thread() {
@@ -40,12 +38,7 @@ public class SplashScreen extends AppCompatActivity {
                 } catch (Exception e) {
                     e.toString();
                 } finally {
-                    if (pref.getBoolean(PreferenceKey.IsLoggedIn)) {
-                        startActivity(new Intent(getApplicationContext(), TablayoutActivity.class));
-                    } else {
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    }
-//                    startActivity(new Intent(getApplicationContext(), TablayoutActivity.class));
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     finish();
                 }
             }
@@ -54,28 +47,3 @@ public class SplashScreen extends AppCompatActivity {
         splashThread.start();
     }
 }
-
-
-//    TextView tvSplash;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        //menghilangkan ActionBar
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        setContentView(R.layout.activity_splash_screen);
-//
-//        tvSplash = (TextView) findViewById(R.id.tvSplash);
-//
-//
-//        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//                finish();
-//            }
-//        }, 3000L); //3000 L = 3 detik
-//    }
-//}

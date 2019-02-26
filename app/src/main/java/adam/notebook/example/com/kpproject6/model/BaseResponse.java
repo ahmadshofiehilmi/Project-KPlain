@@ -13,6 +13,13 @@ public class BaseResponse {
     @SerializedName("user")
     private User data;
 
+    public BaseResponse(String code, Boolean status, String message, User data) {
+        this.code = code;
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
+
     public String getCode() {
         return code;
     }
@@ -22,6 +29,10 @@ public class BaseResponse {
     }
 
     public Boolean getStatus() {
+        return status;
+    }
+
+    public Boolean isStatus(){
         return status;
     }
 

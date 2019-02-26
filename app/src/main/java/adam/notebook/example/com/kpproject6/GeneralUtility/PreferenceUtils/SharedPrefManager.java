@@ -16,7 +16,6 @@ public class SharedPrefManager {
         this.mCtx = mCtx;
     }
 
-
     public static synchronized SharedPrefManager getInstance(Context mCtx) {
         if (mInstance == null) {
             mInstance = new SharedPrefManager(mCtx);
